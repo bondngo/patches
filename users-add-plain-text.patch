@@ -1,0 +1,12 @@
+diff --git a/og.pages.inc b/og.pages.inc
+index c054ae5..f5ab807 100644
+--- a/og.pages.inc
++++ b/og.pages.inc
+@@ -392,6 +392,7 @@ function og_add_users($form_state, $group_node) {
+     '#title' => t('List of users'),
+     '#rows' => 5,
+     '#cols' => 70,
++    '#wysiwyg' => false,
+     // No autocomplete b/c user_autocomplete can't handle commas like taxonomy. pls improve core.
+     // '#autocomplete_path' => 'user/autocomplete',
+     '#description' => t('Add one or more usernames in order to associate users with this group. Separate multiple usernames by commas or new lines.'),
