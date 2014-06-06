@@ -1,15 +1,19 @@
 diff --git a/path_access.module b/path_access.module
-index 8e5ea92..47b3dc3 100644
+index 8e5ea92..450021c 100644
 --- a/path_access.module
 +++ b/path_access.module
-@@ -85,8 +85,12 @@ function path_access_init() {
+@@ -85,8 +85,16 @@ function path_access_init() {
      $page_match = TRUE;
    }
  
 +  $path = drupal_strtolower(drupal_get_path_alias($_GET['q']));
-+    
-+  $path_exists = menu_valid_path(array('link_path' => $path));
 +  
++  $path_exists = FALSE;
++  
++  if (!$path_exists = menu_valid_path(array('link_path' => $path))) {
++    $path_exists = (bool)drupal_lookup_path('source',$path);
++  }
++
    // Check that the current page is not a protected page before blocking user.
 -  if (!$page_match && !path_access_protected_pages($path)) {
 +  if (!$page_match && !path_access_protected_pages($path) && $path_exists) {
