@@ -1,0 +1,39 @@
+diff --git a/og.module b/og.module
+index d024cb6..4bbc370 100644
+--- a/og.module
++++ b/og.module
+@@ -642,13 +642,28 @@ function og_perm() {
+  */
+ function og_og($op, $gid, $uid, $args) {
+   if (module_exists('rules')) {
+-    if (in_array($op, array('user insert', 'user delete'))) {
+-      rules_invoke_event('og_'. str_replace(' ', '_', $op), $uid, $gid);
+-    }
+-    // Pending member was approved.
+-    elseif ($op == 'user update' && $args['is_active']) {
+-      rules_invoke_event('og_user_approved', $uid, $gid);
++    
++    switch ($op) {
++      case 'user insert': 
++        if ($args['is_active']) {
++          rules_invoke_event('og_user_insert', $uid, $gid);
++        }
++        break;
++
++      case 'user delete':
++        rules_invoke_event('og_user_delete', $uid, $gid);
++        break;
++
++      case 'user update':
++        if ($args['is_active']) {
++          rules_invoke_event('og_user_approved', $uid, $gid);
++        }
++        break;
++
++      default:
++        break;
+     }
++    
+   }
+   if (module_exists('trigger')) {
+     $aids = _trigger_get_hook_aids('og', $op);
