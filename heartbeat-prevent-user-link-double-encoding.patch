@@ -1,0 +1,20 @@
+diff --git a/modules/heartbeat_rules/hrules.module b/modules/heartbeat_rules/hrules.module
+index 00a8c72..99b815d 100644
+--- a/modules/heartbeat_rules/hrules.module
++++ b/modules/heartbeat_rules/hrules.module
+@@ -146,7 +146,7 @@ function hrules_token_values($type, $object = NULL, $options = array()) {
+       break;
+     case 'user':
+       if ($object->uid) {
+-        $name = check_plain($object->name);
++        $name = $object->name;
+         $values['user-name-url'] = l($name, 'user/'. $object->uid, array('alias' => 'TRUE',	'attributes' => array('class' => 'user')));
+         $values['user-profile-url'] =  l($name, 'profile/'. $object->name, array('attributes' => array('class' => 'user')));
+         $values['heartbeat-user-picture'] = l(theme('user_picture', $object), 'user/' . $object->uid, array('html' => TRUE));
+@@ -264,4 +264,4 @@ function heartbeat_variables_compare($variables = array(), $defaults = array(),
+     }
+   }
+   return $default_values;
+-}
+\ No newline at end of file
++}
