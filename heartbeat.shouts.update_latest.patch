@@ -1,0 +1,35 @@
+diff --git a/modules/shouts/shouts.js b/modules/shouts/shouts.js
+index 0f0286d..e02b26e 100644
+--- a/modules/shouts/shouts.js
++++ b/modules/shouts/shouts.js
+@@ -63,5 +63,5 @@ Drupal.heartbeat.Shouts.afterShout = function(data) {
+   $(".heartbeat-stream").each(function() {
+     Drupal.heartbeat.pollMessages($(this).attr('id').replace("heartbeat-stream-", ""));
+   });
+-  
+-}
+\ No newline at end of file
++  $('#shout-wrapper').html(Drupal.parseJson(data).data);
++}
+diff --git a/modules/shouts/shouts.module b/modules/shouts/shouts.module
+index f97dfd0..709345e 100644
+--- a/modules/shouts/shouts.module
++++ b/modules/shouts/shouts.module
+@@ -93,7 +93,7 @@ function shouts_user($op, &$edit, &$account, $category = NULL) {
+           '#weight' => 1,
+           'latest_shout' => array(
+             '#type' => 'user_profile_item',
+-            '#value' => theme('shoutform_message', $latest_shout->message, false, false, $latest_shout->time)
++            '#value' => theme('shoutform_message', $latest_shout->message, false, $latest_shout->time)
+           )
+         );
+       }
+@@ -301,7 +301,7 @@ function shouts_shout_form_submit($form = array(), &$form_state = array()) {
+     }
+ 
+     if ($ahah) {
+-      drupal_json(array('status' => TRUE, 'data' => theme('shoutform_message', $message, true, true, date('Y-m-d H:i:s'))));
++      drupal_json(array('status' => TRUE, 'data' => theme('shoutform_message', $message, true, date('Y-m-d H:i:s'))));
+       exit;
+     }
+     else {
