@@ -1,0 +1,15 @@
+diff --git a/bakery.module b/bakery.module
+index 974de8e..b034a03 100644
+--- a/bakery.module
++++ b/bakery.module
+@@ -798,6 +798,10 @@ function bakery_login() {
+       // Check if account credentials are correct using user_load.
+       else {
+         $account = user_load(array('name' => $name, 'pass' => $pass));
++        if (!$account->uid) {
++          // Try e-mail address as well.
++          $account = user_load(array('mail' => $name, 'pass' => $pass));
++        }
+       }
+       if ($account->uid) {
+         // Check if the mail is denied.
