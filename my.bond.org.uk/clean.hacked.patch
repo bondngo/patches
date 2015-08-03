@@ -1,0 +1,1801 @@
+diff --git a/README.txt b/README.txt
+index 0e89fc7..f6dd485 100644
+--- a/README.txt
++++ b/README.txt
+@@ -1,4 +1,4 @@
+-$Id$
++$Id: README.txt,v 1.1.2.2.2.4 2009/10/27 00:21:49 psynaptic Exp $
+ 
+ AUTHOR/MAINTAINERS
+ ------------------
+diff --git a/block.tpl.php b/block.tpl.php
+index db70291..102348a 100644
+--- a/block.tpl.php
++++ b/block.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: block.tpl.php,v 1.1.2.2.2.1.2.2 2009/12/30 17:03:25 psynaptic Exp $ ?>
+ <?php print $pre; ?>
+ 
+ <div <?php print drupal_attributes($attr); ?>>
+diff --git a/box.tpl.php b/box.tpl.php
+index e02e3b4..ac8eb3d 100644
+--- a/box.tpl.php
++++ b/box.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: box.tpl.php,v 1.1.2.2.2.1.2.2 2009/12/30 17:03:25 psynaptic Exp $ ?>
+ <?php print $pre; ?>
+ 
+ <div <?php print drupal_attributes($attr); ?>>
+diff --git a/clean.info b/clean.info
+index 31a21d0..25c15b5 100644
+--- a/clean.info
++++ b/clean.info
+@@ -1,19 +1,31 @@
+-; $Id$
++; $Id: clean.info,v 1.1.2.10.2.2 2009/12/02 00:31:00 psynaptic Exp $
+ 
+ name = Clean
+ description = Lean, mean base theme with a focus on minimal implementation.
+ core = 6.x
+ engine = phptemplate
+ screenshot = images/screenshot.png
++stylesheets[all][] = css/normalize.css
+ stylesheets[all][] = css/reset.css
+ stylesheets[all][] = css/htmlelements.css
+ stylesheets[all][] = css/layout.css
+ stylesheets[all][] = css/navigation.css
+ stylesheets[all][] = css/typography.css
+ stylesheets[all][] = css/color.css
++stylesheets[all][] = css/960.css
++stylesheets[all][] = css/panels.css
++
+ scripts[] = js/clean.js
++
+ regions[left] = Left sidebar
+ regions[right] = Right sidebar
+ regions[content] = Content
+ regions[header] = Header
+ regions[footer] = Footer
++
++; Information added by drupal.org packaging script on 2010-04-22
++version = "6.x-2.0-beta3"
++core = "6.x"
++project = "clean"
++datestamp = "1271896505"
++
+diff --git a/comment.tpl.php b/comment.tpl.php
+index fb2ff98..d3136e9 100644
+--- a/comment.tpl.php
++++ b/comment.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: comment.tpl.php,v 1.1.2.4.2.2.2.3 2009/12/30 17:06:50 psynaptic Exp $ ?>
+ <?php print $pre; ?>
+ 
+ <div <?php print drupal_attributes($attr); ?>>
+diff --git a/css/960.css b/css/960.css
+new file mode 100644
+index 0000000..f63d2fa
+--- /dev/null
++++ b/css/960.css
+@@ -0,0 +1,584 @@
++/*
++  Stolen from Ninesixty theme
++*/
++
++/* `Containers
++----------------------------------------------------------------------------------------------------*/
++
++.container-12,
++.container-16 {
++  margin-left: auto;
++  margin-right: auto;
++  width: 960px;
++}
++
++/* `Grid >> Global
++----------------------------------------------------------------------------------------------------*/
++
++.grid-1,
++.grid-2,
++.grid-3,
++.grid-4,
++.grid-5,
++.grid-6,
++.grid-7,
++.grid-8,
++.grid-9,
++.grid-10,
++.grid-11,
++.grid-12,
++.grid-13,
++.grid-14,
++.grid-15,
++.grid-16 {
++  display: inline;
++  float: left;
++  position: relative;
++  margin-left: 15px;
++  margin-right: 15px;
++}
++
++.container-12 .grid-3,
++.container-16 .grid-4 {
++  width: 210px;
++}
++
++.container-12 .grid-6,
++.container-16 .grid-8 {
++  width: 450px;
++}
++
++.container-12 .grid-9,
++.container-16 .grid-12 {
++  width: 690px;
++}
++
++.container-12 .grid-12,
++.container-16 .grid-16 {
++  width: 930px;
++}
++
++/* `Grid >> Children (Alpha ~ First, Omega ~ Last)
++----------------------------------------------------------------------------------------------------*/
++
++.alpha {
++  margin-left: 0;
++}
++
++.omega {
++  margin-right: 0;
++}
++
++/* `Grid >> Float positions
++----------------------------------------------------------------------------------------------------*/
++
++.float-left {
++	float: left;
++}
++
++.float-right {
++	float: right;
++}
++
++
++/* `Grid >> 12 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .grid-1 {
++  width: 50px;
++}
++
++.container-12 .grid-2 {
++  width: 130px;
++}
++
++.container-12 .grid-4 {
++  width: 290px;
++}
++
++.container-12 .grid-5 {
++  width: 370px;
++}
++
++.container-12 .grid-7 {
++  width: 530px;
++}
++
++.container-12 .grid-8 {
++  width: 610px;
++}
++
++.container-12 .grid-10 {
++  width: 770px;
++}
++
++.container-12 .grid-11 {
++  width: 850px;
++}
++
++/* `Grid >> 16 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-16 .grid-1 {
++  width: 40px;
++}
++
++.container-16 .grid-2 {
++  width: 90px;
++}
++
++.container-16 .grid-3 {
++  width: 150px;
++}
++
++.container-16 .grid-5 {
++  width: 270px;
++}
++
++.container-16 .grid-6 {
++  width: 330px;
++}
++
++.container-16 .grid-7 {
++  width: 390px;
++}
++
++.container-16 .grid-9 {
++  width: 510px;
++}
++
++.container-16 .grid-10 {
++  width: 570px;
++}
++
++.container-16 .grid-11 {
++  width: 630px;
++}
++
++.container-16 .grid-13 {
++  width: 750px;
++}
++
++.container-16 .grid-14 {
++  width: 810px;
++}
++
++.container-16 .grid-15 {
++  width: 870px;
++}
++
++/* `Prefix Extra Space >> Global
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .prefix-3,
++.container-16 .prefix-4 {
++  padding-left: 230px;
++}
++
++.container-12 .prefix-6,
++.container-16 .prefix-8 {
++  padding-left: 470px;
++}
++
++.container-12 .prefix-9,
++.container-16 .prefix-12 {
++  padding-left: 710px;
++}
++
++/* `Prefix Extra Space >> 12 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .prefix-1 {
++  padding-left: 70px;
++}
++
++.container-12 .prefix-2 {
++  padding-left: 150px;
++}
++
++.container-12 .prefix-4 {
++  padding-left: 310px;
++}
++
++.container-12 .prefix-5 {
++  padding-left: 390px;
++}
++
++.container-12 .prefix-7 {
++  padding-left: 550px;
++}
++
++.container-12 .prefix-8 {
++  padding-left: 630px;
++}
++
++.container-12 .prefix-10 {
++  padding-left: 790px;
++}
++
++.container-12 .prefix-11 {
++  padding-left: 870px;
++}
++
++/* `Prefix Extra Space >> 16 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-16 .prefix-1 {
++  padding-left: 50px;
++}
++
++.container-16 .prefix-2 {
++  padding-left: 110px;
++}
++
++.container-16 .prefix-3 {
++  padding-left: 170px;
++}
++
++.container-16 .prefix-5 {
++  padding-left: 290px;
++}
++
++.container-16 .prefix-6 {
++  padding-left: 350px;
++}
++
++.container-16 .prefix-7 {
++  padding-left: 410px;
++}
++
++.container-16 .prefix-9 {
++  padding-left: 530px;
++}
++
++.container-16 .prefix-10 {
++  padding-left: 590px;
++}
++
++.container-16 .prefix-11 {
++  padding-left: 650px;
++}
++
++.container-16 .prefix-13 {
++  padding-left: 770px;
++}
++
++.container-16 .prefix-14 {
++  padding-left: 830px;
++}
++
++.container-16 .prefix-15 {
++  padding-left: 890px;
++}
++
++/* `Suffix Extra Space >> Global
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .suffix-3,
++.container-16 .suffix-4 {
++  padding-right: 230px;
++}
++
++.container-12 .suffix-6,
++.container-16 .suffix-8 {
++  padding-right: 470px;
++}
++
++.container-12 .suffix-9,
++.container-16 .suffix-12 {
++  padding-right: 710px;
++}
++
++/* `Suffix Extra Space >> 12 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .suffix-1 {
++  padding-right: 70px;
++}
++
++.container-12 .suffix-2 {
++  padding-right: 150px;
++}
++
++.container-12 .suffix-4 {
++  padding-right: 310px;
++}
++
++.container-12 .suffix-5 {
++  padding-right: 390px;
++}
++
++.container-12 .suffix-7 {
++  padding-right: 550px;
++}
++
++.container-12 .suffix-8 {
++  padding-right: 630px;
++}
++
++.container-12 .suffix-10 {
++  padding-right: 790px;
++}
++
++.container-12 .suffix-11 {
++  padding-right: 870px;
++}
++
++/* `Suffix Extra Space >> 16 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-16 .suffix-1 {
++  padding-right: 50px;
++}
++
++.container-16 .suffix-2 {
++  padding-right: 110px;
++}
++
++.container-16 .suffix-3 {
++  padding-right: 170px;
++}
++
++.container-16 .suffix-5 {
++  padding-right: 290px;
++}
++
++.container-16 .suffix-6 {
++  padding-right: 350px;
++}
++
++.container-16 .suffix-7 {
++  padding-right: 410px;
++}
++
++.container-16 .suffix-9 {
++  padding-right: 530px;
++}
++
++.container-16 .suffix-10 {
++  padding-right: 590px;
++}
++
++.container-16 .suffix-11 {
++  padding-right: 650px;
++}
++
++.container-16 .suffix-13 {
++  padding-right: 770px;
++}
++
++.container-16 .suffix-14 {
++  padding-right: 830px;
++}
++
++.container-16 .suffix-15 {
++  padding-right: 890px;
++}
++
++/* `Push Space >> Global
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .push-3,
++.container-16 .push-4 {
++  left: 240px;
++}
++
++.container-12 .push-6,
++.container-16 .push-8 {
++  left: 480px;
++}
++
++.container-12 .push-9,
++.container-16 .push-12 {
++  left: 720px;
++}
++
++/* `Push Space >> 12 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .push-1 {
++  left: 80px;
++}
++
++.container-12 .push-2 {
++  left: 160px;
++}
++
++.container-12 .push-4 {
++  left: 320px;
++}
++
++.container-12 .push-5 {
++  left: 400px;
++}
++
++.container-12 .push-7 {
++  left: 560px;
++}
++
++.container-12 .push-8 {
++  left: 640px;
++}
++
++.container-12 .push-10 {
++  left: 800px;
++}
++
++.container-12 .push-11 {
++  left: 880px;
++}
++
++/* `Push Space >> 16 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-16 .push-1 {
++  left: 60px;
++}
++
++.container-16 .push-2 {
++  left: 120px;
++}
++
++.container-16 .push-3 {
++  left: 180px;
++}
++
++.container-16 .push-5 {
++  left: 300px;
++}
++
++.container-16 .push-6 {
++  left: 360px;
++}
++
++.container-16 .push-7 {
++  left: 420px;
++}
++
++.container-16 .push-9 {
++  left: 540px;
++}
++
++.container-16 .push-10 {
++  left: 600px;
++}
++
++.container-16 .push-11 {
++  left: 660px;
++}
++
++.container-16 .push-13 {
++  left: 780px;
++}
++
++.container-16 .push-14 {
++  left: 840px;
++}
++
++.container-16 .push-15 {
++  left: 900px;
++}
++
++/* `Pull Space >> Global
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .pull-3,
++.container-16 .pull-4 {
++  left: -240px;
++}
++
++.container-12 .pull-6,
++.container-16 .pull-8 {
++  left: -480px;
++}
++
++.container-12 .pull-9,
++.container-16 .pull-12 {
++  left: -720px;
++}
++
++/* `Pull Space >> 12 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-12 .pull-1 {
++  left: -80px;
++}
++
++.container-12 .pull-2 {
++  left: -160px;
++}
++
++.container-12 .pull-4 {
++  left: -320px;
++}
++
++.container-12 .pull-5 {
++  left: -400px;
++}
++
++.container-12 .pull-7 {
++  left: -560px;
++}
++
++.container-12 .pull-8 {
++  left: -640px;
++}
++
++.container-12 .pull-10 {
++  left: -800px;
++}
++
++.container-12 .pull-11 {
++  left: -880px;
++}
++
++/* `Pull Space >> 16 Columns
++----------------------------------------------------------------------------------------------------*/
++
++.container-16 .pull-1 {
++  left: -60px;
++}
++
++.container-16 .pull-2 {
++  left: -120px;
++}
++
++.container-16 .pull-3 {
++  left: -180px;
++}
++
++.container-16 .pull-5 {
++  left: -300px;
++}
++
++.container-16 .pull-6 {
++  left: -360px;
++}
++
++.container-16 .pull-7 {
++  left: -420px;
++}
++
++.container-16 .pull-9 {
++  left: -540px;
++}
++
++.container-16 .pull-10 {
++  left: -600px;
++}
++
++.container-16 .pull-11 {
++  left: -660px;
++}
++
++.container-16 .pull-13 {
++  left: -780px;
++}
++
++.container-16 .pull-14 {
++  left: -840px;
++}
++
++.container-16 .pull-15 {
++  left: -900px;
++}
+\ No newline at end of file
+diff --git a/css/color.css b/css/color.css
+index 141ebae..5c8d98f 100644
+--- a/css/color.css
++++ b/css/color.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: color.css,v 1.1.2.16.2.22 2010/04/21 23:04:56 psynaptic Exp $ */
+ 
+ /* Global */
+ 
+diff --git a/css/grid.css b/css/grid.css
+index 7ca5dcf..37f662f 100644
+--- a/css/grid.css
++++ b/css/grid.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: grid.css,v 1.1.2.3.2.3 2010/02/08 23:52:30 psynaptic Exp $ */
+ 
+ /* Grid and toggle styles */
+ 
+@@ -50,6 +50,7 @@ body {
+   letter-spacing: 1px;
+   background-color: #AFE3FC;
+   color: #555;
++  behavior: url(/sites/all/libraries/css3pie/PIE.htc);
+ }
+ 
+ #clean-grid-toggle.grid-enabled {
+diff --git a/css/htmlelements.css b/css/htmlelements.css
+index dcd8b5c..f5804fb 100644
+--- a/css/htmlelements.css
++++ b/css/htmlelements.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: htmlelements.css,v 1.1.2.18.2.23 2010/04/21 15:01:07 psynaptic Exp $ */
+ 
+ /* Tables */
+ 
+diff --git a/css/ie-lt8.css b/css/ie-lt8.css
+index a09c191..b5c458c 100644
+--- a/css/ie-lt8.css
++++ b/css/ie-lt8.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: ie-lt8.css,v 1.1.2.1 2009/12/29 15:26:24 psynaptic Exp $ */
+ 
+ /* Fixes for IE < 8 */
+ 
+diff --git a/css/layout.css b/css/layout.css
+index 273b8d3..9072234 100644
+--- a/css/layout.css
++++ b/css/layout.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: layout.css,v 1.1.2.11.2.3 2010/04/21 14:17:09 psynaptic Exp $ */
+ 
+ /* Layout */
+ 
+diff --git a/css/navigation.css b/css/navigation.css
+index 4e5ba43..c4f674c 100644
+--- a/css/navigation.css
++++ b/css/navigation.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: navigation.css,v 1.1.2.11.2.8 2010/03/03 17:45:16 psynaptic Exp $ */
+ 
+ /* Links */
+ 
+diff --git a/css/normalize.css b/css/normalize.css
+new file mode 100644
+index 0000000..ea5f721
+--- /dev/null
++++ b/css/normalize.css
+@@ -0,0 +1,449 @@
++/*! normalize.css 2012-01-22T23:30 UTC - http://github.com/necolas/normalize.css */
++
++/* =============================================================================
++   HTML5 display definitions
++   ========================================================================== */
++
++/*
++ * Corrects block display not defined in IE6/7/8/9 & FF3
++ */
++
++article,
++aside,
++details,
++figcaption,
++figure,
++footer,
++header,
++hgroup,
++nav,
++section {
++    display: block;
++}
++
++/*
++ * Corrects inline-block display not defined in IE6/7/8/9 & FF3
++ */
++
++audio,
++canvas,
++video {
++    display: inline-block;
++    *display: inline;
++    *zoom: 1;
++}
++
++/*
++ * Prevents modern browsers from displaying 'audio' without controls
++ */
++
++audio:not([controls]) {
++    display: none;
++}
++
++/*
++ * Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4
++ * Known issue: no IE6 support
++ */
++
++[hidden] {
++    display: none;
++}
++
++
++/* =============================================================================
++   Base
++   ========================================================================== */
++
++/*
++ * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
++ *    http://clagnut.com/blog/348/#c790
++ * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
++ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
++ */
++
++html {
++    font-size: 100%; /* 1 */
++    -webkit-text-size-adjust: 100%; /* 2 */
++    -ms-text-size-adjust: 100%; /* 2 */
++}
++
++/* 
++ * Addresses font-family inconsistency between 'textarea' and other form elements.
++ */
++
++html,
++button,
++input,
++select,
++textarea {
++    font-family: sans-serif;
++}
++
++/*
++ * Addresses margins handled incorrectly in IE6/7
++ */
++
++body {
++    margin: 0;
++}
++
++
++/* =============================================================================
++   Links
++   ========================================================================== */
++
++/*
++ * Addresses outline displayed oddly in Chrome
++ */
++
++a:focus {
++    outline: thin dotted;
++}
++
++/*
++ * Improves readability when focused and also mouse hovered in all browsers
++ * people.opera.com/patrickl/experiments/keyboard/test
++ */
++
++a:hover,
++a:active {
++    outline: 0;
++}
++
++
++/* =============================================================================
++   Typography
++   ========================================================================== */
++
++/*
++ * Neutralise smaller font-size in 'section' and 'article' in FF4+, Chrome, S5
++ */
++
++h1 {
++    font-size: 2em;
++}
++
++/*
++ * Addresses styling not present in IE7/8/9, S5, Chrome
++ */
++
++abbr[title] {
++    border-bottom: 1px dotted;
++}
++
++/*
++ * Addresses style set to 'bolder' in FF3+, S4/5, Chrome
++*/
++
++b, 
++strong { 
++    font-weight: bold; 
++}
++
++blockquote {
++    margin: 1em 40px;
++}
++
++/*
++ * Addresses styling not present in S5, Chrome
++ */
++
++dfn {
++    cursor: help;
++    font-style: normal;
++    opacity: 0.9;
++}
++
++h1 dfn, h2 dfn, h3 dfn, h4 dfn {
++    opacity: 1;
++}
++
++dfn:hover {
++border-bottom: 1px dotted silver;
++}
++
++/*
++ * Addresses styling not present in IE6/7/8/9
++ */
++
++mark {
++    background: #ff0;
++    color: #000;
++}
++
++/*
++ * Corrects font family set oddly in IE6, S4/5, Chrome
++ * en.wikipedia.org/wiki/User:Davidgothberg/Test59
++ */
++
++pre,
++code,
++kbd,
++samp {
++    font-family: monospace, serif;
++    _font-family: 'courier new', monospace;
++    font-size: 1em;
++}
++
++/*
++ * Improves readability of pre-formatted text in all browsers
++ */
++
++pre {
++    white-space: pre;
++    white-space: pre-wrap;
++    word-wrap: break-word;
++}
++
++/*
++ * 1. Addresses CSS quotes not supported in IE6/7
++ * 2. Addresses quote property not supported in S4
++ */
++
++/* 1 */
++
++q {
++    quotes: none;
++}
++
++/* 2 */
++
++q:before,
++q:after {
++    content: '';
++    content: none;
++}
++
++small {
++    font-size: 75%;
++}
++
++/*
++ * Prevents sub and sup affecting line-height in all browsers
++ * gist.github.com/413930
++ */
++
++sub,
++sup {
++    font-size: 75%;
++    line-height: 0;
++    position: relative;
++    vertical-align: baseline;
++}
++
++sup {
++    top: -0.5em;
++}
++
++sub {
++    bottom: -0.25em;
++}
++
++
++/* =============================================================================
++   Lists
++   ========================================================================== */
++
++ul,
++ol {
++    margin-left: 0;
++    padding: 0 0 0 0;
++}
++
++dd {
++    margin: 0 0 0 40px;
++}
++
++nav ul,
++nav ol {
++    list-style: none;
++    list-style-image: none;
++}
++
++
++/* =============================================================================
++   Embedded content
++   ========================================================================== */
++
++/*
++ * 1. Removes border when inside 'a' element in IE6/7/8/9, FF3
++ * 2. Improves image quality when scaled in IE7
++ *    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
++ */
++
++img {
++    border: 0; /* 1 */
++    -ms-interpolation-mode: bicubic; /* 2 */
++}
++
++/*
++ * Corrects overflow displayed oddly in IE9 
++ */
++
++svg:not(:root) {
++    overflow: hidden;
++}
++
++
++/* =============================================================================
++   Figures
++   ========================================================================== */
++
++/*
++ * Addresses margin not present in IE6/7/8/9, S5, O11
++ */
++
++figure {
++    margin: 0;
++}
++
++
++/* =============================================================================
++   Forms
++   ========================================================================== */
++
++/*
++ * Corrects margin displayed oddly in IE6/7
++ */
++
++form {
++    margin: 0;
++}
++
++/*
++ * Define consistent border, margin, and padding
++ */
++
++fieldset {
++    border: 1px solid #c0c0c0;
++    margin: 0 2px;
++    padding: 0.35em 0.625em 0.75em;
++}
++
++/*
++ * 1. Corrects color not being inherited in IE6/7/8/9
++ * 2. Corrects text not wrapping in FF3 
++ * 3. Corrects alignment displayed oddly in IE6/7
++ */
++
++legend {
++    border: 0; /* 1 */
++    padding: 0;
++    white-space: normal; /* 2 */
++    *margin-left: -7px; /* 3 */
++}
++
++/*
++ * 1. Corrects font size not being inherited in all browsers
++ * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
++ * 3. Improves appearance and consistency in all browsers
++ */
++
++button,
++input,
++select,
++textarea {
++    font-size: 100%; /* 1 */
++    margin: 0; /* 2 */
++    vertical-align: baseline; /* 3 */
++    *vertical-align: middle; /* 3 */
++}
++
++/*
++ * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
++ */
++
++button,
++input {
++    line-height: normal; /* 1 */
++}
++
++/*
++ * 1. Improves usability and consistency of cursor style between image-type 'input' and others
++ * 2. Corrects inability to style clickable 'input' types in iOS
++ * 3. Removes inner spacing in IE7 without affecting normal text inputs
++ *    Known issue: inner spacing remains in IE6
++ */
++
++button,
++input[type="button"], 
++input[type="reset"], 
++input[type="submit"] {
++    cursor: pointer; /* 1 */
++    -webkit-appearance: button; /* 2 */
++    *overflow: visible;  /* 3 */
++}
++
++/*
++ * 1. Addresses box sizing set to content-box in IE8/9
++ * 2. Removes excess padding in IE8/9
++ * 3. Removes excess padding in IE7
++      Known issue: excess padding remains in IE6
++ */
++
++input[type="checkbox"],
++input[type="radio"] {
++    box-sizing: border-box; /* 1 */
++    padding: 0; /* 2 */
++    *height: 13px; /* 3 */
++    *width: 13px; /* 3 */
++}
++
++/*
++ * 1. Addresses appearance set to searchfield in S5, Chrome
++ * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
++ */
++
++input[type="search"] {
++    -webkit-appearance: textfield; /* 1 */
++    -moz-box-sizing: content-box;
++    -webkit-box-sizing: content-box; /* 2 */
++    box-sizing: content-box;
++}
++
++/*
++ * Removes inner padding and search cancel button in S5, Chrome on OS X
++ */
++
++input[type="search"]::-webkit-search-decoration,
++input[type="search"]::-webkit-search-cancel-button {
++    -webkit-appearance: none;
++}
++
++/*
++ * Removes inner padding and border in FF3+
++ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
++ */
++
++button::-moz-focus-inner,
++input::-moz-focus-inner {
++    border: 0;
++    padding: 0;
++}
++
++/*
++ * 1. Removes default vertical scrollbar in IE6/7/8/9
++ * 2. Improves readability and alignment in all browsers
++ */
++
++textarea {
++    overflow: auto; /* 1 */
++    vertical-align: top; /* 2 */
++}
++
++
++/* =============================================================================
++   Tables
++   ========================================================================== */
++
++/* 
++ * Remove most spacing between table cells
++ */
++
++table {
++    border-collapse: collapse;
++    border-spacing: 0;
++}
++
++/* end normalize.css*/
+diff --git a/css/panels.css b/css/panels.css
+new file mode 100644
+index 0000000..ecbdbb6
+--- /dev/null
++++ b/css/panels.css
+@@ -0,0 +1,56 @@
++/*
++  Style re-sets for panels
++*/
++
++/* `Twocol layout
++----------------------------------------------------------------------------------------------------*/
++
++.panel-2col .panel-col-first{
++  width: 705px;
++}
++
++.panel-2col .panel-col-last {
++  width: 225px;
++}
++
++.panel-2col .panel-col-first .inside,
++.panel-2col .panel-col-last .inside {
++  margin: 0px;
++}
++
++/* `Twocol stacked layout
++----------------------------------------------------------------------------------------------------*/
++
++.panel-2col-stacked .panel-col-first {
++  width: 705px;
++}
++
++.panel-2col-stacked .panel-col-last {
++  width: 225px;
++}
++
++.panel-2col-stacked .panel-col-first .inside,
++.panel-2col-stacked .panel-col-last .inside {
++  margin: 0px;
++}
++
++/* `Threecol stacked layout
++----------------------------------------------------------------------------------------------------*/
++
++.panel-3col-33-stacked .panel-col-first {
++  width: 345px;
++}
++
++.panel-3col-33-stacked .panel-col {
++  width: 355px;
++}
++
++.panel-3col-33-stacked .panel-col-last {
++  width: 225px;
++}
++
++.panel-3col-33-stacked .panel-col-first,
++.panel-3col-33-stacked .panel-col,
++.panel-3col-33-stacked .panel-col-last {
++  margin: 0px;
++}
+\ No newline at end of file
+diff --git a/css/reset.css b/css/reset.css
+index 970bdc6..11b0ffe 100644
+--- a/css/reset.css
++++ b/css/reset.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: reset.css,v 1.1.2.11 2010/04/21 23:04:56 psynaptic Exp $ */
+ 
+ /* Browser */
+ 
+diff --git a/css/typography.css b/css/typography.css
+index 2e73972..dbbd825 100644
+--- a/css/typography.css
++++ b/css/typography.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: typography.css,v 1.1.4.14.2.7 2010/04/21 15:01:07 psynaptic Exp $ */
+ 
+ /* Global */
+ 
+diff --git a/fieldset.tpl.php b/fieldset.tpl.php
+index 4df4aeb..880b7d1 100644
+--- a/fieldset.tpl.php
++++ b/fieldset.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: fieldset.tpl.php,v 1.1.2.2 2009/12/30 17:03:25 psynaptic Exp $ ?>
+ <?php print $pre; ?>
+ 
+ <div <?php print drupal_attributes($attr); ?>>
+diff --git a/js/clean.js b/js/clean.js
+index a6197e3..432b477 100644
+--- a/js/clean.js
++++ b/js/clean.js
+@@ -1,4 +1,4 @@
+-// $Id$
++// $Id: clean.js,v 1.1.2.1.2.1 2010/02/05 13:36:11 psynaptic Exp $
+ 
+ Drupal.behaviors.clean = function (context) {
+   $('div.fieldset:not(.clean-processed)').each(function() {
+diff --git a/js/grid.js b/js/grid.js
+index ea8b2e3..7ec6a7c 100644
+--- a/js/grid.js
++++ b/js/grid.js
+@@ -1,4 +1,4 @@
+-// $Id$
++// $Id: grid.js,v 1.1.2.3.2.4 2010/02/07 19:08:59 psynaptic Exp $
+ 
+ Drupal.behaviors.clean_grid = function(context) {
+   var $grid_image = Drupal.settings.clean.theme_path + 'images/grid' + Drupal.settings.clean.columns + '.png';
+diff --git a/node.tpl.php b/node.tpl.php
+index a0a38a6..6bec59b 100644
+--- a/node.tpl.php
++++ b/node.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: node.tpl.php,v 1.1.2.3.2.2.2.6 2010/03/01 13:37:46 psynaptic Exp $ ?>
+ <?php print $pre; ?>
+ 
+ <div <?php print drupal_attributes($attr); ?>>
+@@ -11,7 +11,8 @@
+ 
+   <?php if ($submitted): ?>
+     <div class='node-submitted clear-block'>
+-      <?php print $submitted; ?>
++      <?php print '<span class="author">By: <span><a href="/user/'.$node->uid.'">'.$node->name.'</a></span></span>'; ?>
++      <?php print '<span class="date">Date: <span>'.date('jS F Y',$node->changed).'</span></span>'; ?>
+     </div>
+   <?php endif; ?>
+ 
+diff --git a/page.tpl.php b/page.tpl.php
+index c86ce0a..80a8996 100644
+--- a/page.tpl.php
++++ b/page.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: page.tpl.php,v 1.1.2.5.2.14.2.12 2010/03/01 13:37:46 psynaptic Exp $ ?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html<?php print drupal_attributes($html_attr); ?>>
+@@ -36,13 +36,12 @@
+       <?php print $skip_link; ?>
+       <?php print $primary_links; ?>
+       <?php print $secondary_links; ?>
+-      <?php print $breadcrumb; ?>
+     </div>
+   </div>
+ 
+   <div id="page">
+     <div class="limiter clear-block">
+-      <div id="main" class="clear-block">
++      <div id="main" class="clear-block container-12">
+ 
+         <?php if ($left): ?>
+           <div id="left" class="sidebar">
+diff --git a/subthemes/clean_1kb/clean_1kb.info b/subthemes/clean_1kb/clean_1kb.info
+index 04daee3..40c2c43 100644
+--- a/subthemes/clean_1kb/clean_1kb.info
++++ b/subthemes/clean_1kb/clean_1kb.info
+@@ -1,4 +1,4 @@
+-; $Id$
++; $Id: clean_1kb.info,v 1.1.2.1 2009/12/31 17:22:57 psynaptic Exp $
+ 
+ name = Clean 1KB
+ description = 1KB CSS Grid version of Clean theme.
+@@ -6,3 +6,10 @@ base theme = clean
+ core = 6.x
+ engine = phptemplate
+ stylesheets[all][] = css/layout.css
++
++; Information added by drupal.org packaging script on 2010-04-22
++version = "6.x-2.0-beta3"
++core = "6.x"
++project = "clean"
++datestamp = "1271896505"
++
+diff --git a/subthemes/clean_1kb/css/12cols.css b/subthemes/clean_1kb/css/12cols.css
+index 519dab1..42250ee 100644
+--- a/subthemes/clean_1kb/css/12cols.css
++++ b/subthemes/clean_1kb/css/12cols.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: 12cols.css,v 1.1.2.1 2009/12/31 17:22:57 psynaptic Exp $ */
+ 
+ /* ================ */
+ /* = The 1Kb Grid = */     /* 12 columns, 60 pixels each, with 20 pixel gutter */
+diff --git a/subthemes/clean_1kb/css/16cols.css b/subthemes/clean_1kb/css/16cols.css
+index c2238fc..a819a52 100644
+--- a/subthemes/clean_1kb/css/16cols.css
++++ b/subthemes/clean_1kb/css/16cols.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: 16cols.css,v 1.1.2.1 2009/12/31 17:22:57 psynaptic Exp $ */
+ 
+ /* ================ */
+ /* = The 1Kb Grid = */     /* 16 columns, 40 pixels each, with 20 pixel gutter */
+diff --git a/subthemes/clean_1kb/css/layout.css b/subthemes/clean_1kb/css/layout.css
+index bf7fe48..e215978 100644
+--- a/subthemes/clean_1kb/css/layout.css
++++ b/subthemes/clean_1kb/css/layout.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: layout.css,v 1.1.2.1 2009/12/31 17:22:57 psynaptic Exp $ */
+ 
+ .column {
+   overflow: visible;
+diff --git a/subthemes/clean_1kb/page.tpl.php b/subthemes/clean_1kb/page.tpl.php
+index 39e93e5..29565ea 100644
+--- a/subthemes/clean_1kb/page.tpl.php
++++ b/subthemes/clean_1kb/page.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: page.tpl.php,v 1.1.2.2 2010/04/21 23:18:01 snufkin Exp $ ?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html<?php print drupal_attributes($html_attr); ?>>
+diff --git a/subthemes/clean_1kb/template.php b/subthemes/clean_1kb/template.php
+index d4ebce3..17fd5b8 100644
+--- a/subthemes/clean_1kb/template.php
++++ b/subthemes/clean_1kb/template.php
+@@ -1,5 +1,5 @@
+ <?php
+-// $Id$
++// $Id: template.php,v 1.1.2.4 2010/04/11 22:57:47 snufkin Exp $
+ 
+ /**
+  * Override or insert variables into the page templates.
+diff --git a/subthemes/clean_960gs/clean_960gs.info b/subthemes/clean_960gs/clean_960gs.info
+index ccd667b..d8bff13 100644
+--- a/subthemes/clean_960gs/clean_960gs.info
++++ b/subthemes/clean_960gs/clean_960gs.info
+@@ -1,4 +1,4 @@
+-; $Id$
++; $Id: clean_960gs.info,v 1.1.2.1 2009/12/31 16:23:23 psynaptic Exp $
+ 
+ name = Clean 960gs
+ description = 960 Grid System version of Clean theme.
+@@ -6,3 +6,10 @@ base theme = clean
+ core = 6.x
+ engine = phptemplate
+ stylesheets[all][] = css/layout.css
++
++; Information added by drupal.org packaging script on 2010-04-22
++version = "6.x-2.0-beta3"
++core = "6.x"
++project = "clean"
++datestamp = "1271896505"
++
+diff --git a/subthemes/clean_960gs/css/layout.css b/subthemes/clean_960gs/css/layout.css
+index 3c6e0f9..57eb36b 100644
+--- a/subthemes/clean_960gs/css/layout.css
++++ b/subthemes/clean_960gs/css/layout.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: layout.css,v 1.1.2.1 2009/12/31 16:23:23 psynaptic Exp $ */
+ 
+ /*
+ 	Variable Grid System.
+diff --git a/subthemes/clean_960gs/page.tpl.php b/subthemes/clean_960gs/page.tpl.php
+index 9be4d1e..eca1bae 100644
+--- a/subthemes/clean_960gs/page.tpl.php
++++ b/subthemes/clean_960gs/page.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: page.tpl.php,v 1.1.2.3 2010/04/21 23:18:01 snufkin Exp $ ?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html<?php print drupal_attributes($html_attr); ?>>
+diff --git a/subthemes/clean_960gs/template.php b/subthemes/clean_960gs/template.php
+index cda1df9..7da3a2f 100644
+--- a/subthemes/clean_960gs/template.php
++++ b/subthemes/clean_960gs/template.php
+@@ -1,5 +1,5 @@
+ <?php
+-// $Id$
++// $Id: template.php,v 1.1.2.3 2010/04/11 22:57:47 snufkin Exp $
+ 
+ /**
+  * Override or insert variables into the page templates.
+diff --git a/subthemes/clean_dark/clean_dark.info b/subthemes/clean_dark/clean_dark.info
+index 3c611d6..47f0874 100644
+--- a/subthemes/clean_dark/clean_dark.info
++++ b/subthemes/clean_dark/clean_dark.info
+@@ -1,4 +1,4 @@
+-; $Id$
++; $Id: clean_dark.info,v 1.1.2.1.2.2 2010/03/14 10:48:58 psynaptic Exp $
+ 
+ name = Clean Dark
+ description = Dark version of Clean theme.
+@@ -6,3 +6,10 @@ base theme = clean
+ core = 6.x
+ engine = phptemplate
+ stylesheets[all][] = css/color.css
++
++; Information added by drupal.org packaging script on 2010-04-22
++version = "6.x-2.0-beta3"
++core = "6.x"
++project = "clean"
++datestamp = "1271896505"
++
+diff --git a/subthemes/clean_dark/css/color.css b/subthemes/clean_dark/css/color.css
+index 5979a97..cea7932 100644
+--- a/subthemes/clean_dark/css/color.css
++++ b/subthemes/clean_dark/css/color.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: color.css,v 1.1.2.5.2.10 2010/04/21 23:04:56 psynaptic Exp $ */
+ 
+ /* Global */
+ 
+diff --git a/subthemes/clean_liquid/clean_liquid.info b/subthemes/clean_liquid/clean_liquid.info
+index 19026a5..a96c716 100644
+--- a/subthemes/clean_liquid/clean_liquid.info
++++ b/subthemes/clean_liquid/clean_liquid.info
+@@ -1,7 +1,14 @@
+-; $Id$
++; $Id: clean_liquid.info,v 1.1.2.1.2.1 2009/12/10 12:35:27 psynaptic Exp $
+ 
+ name = Clean Liquid
+ description = Liquid version of Clean theme.
+ base theme = clean
+ core = 6.x
+ stylesheets[all][] = css/layout.css
++
++; Information added by drupal.org packaging script on 2010-04-22
++version = "6.x-2.0-beta3"
++core = "6.x"
++project = "clean"
++datestamp = "1271896505"
++
+diff --git a/subthemes/clean_liquid/css/layout.css b/subthemes/clean_liquid/css/layout.css
+index be92b2c..125a3be 100644
+--- a/subthemes/clean_liquid/css/layout.css
++++ b/subthemes/clean_liquid/css/layout.css
+@@ -1,4 +1,4 @@
+-/* $Id$ */
++/* $Id: layout.css,v 1.1.2.1.2.1 2009/12/30 17:03:25 psynaptic Exp $ */
+ 
+ /* Layout */
+ 
+diff --git a/subthemes/clean_liquid/page.tpl.php b/subthemes/clean_liquid/page.tpl.php
+index 123a5f0..81a95da 100644
+--- a/subthemes/clean_liquid/page.tpl.php
++++ b/subthemes/clean_liquid/page.tpl.php
+@@ -1,4 +1,4 @@
+-<?php // $Id$ ?>
++<?php // $Id: page.tpl.php,v 1.1.2.1.2.5 2010/04/21 23:18:01 snufkin Exp $ ?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html<?php print drupal_attributes($html_attr); ?>>
+diff --git a/template.php b/template.php
+index 2ea404f..abd2ff3 100644
+--- a/template.php
++++ b/template.php
+@@ -1,5 +1,5 @@
+ <?php
+-// $Id$
++// $Id: template.php,v 1.1.2.7.2.17.2.36 2010/04/21 22:28:05 psynaptic Exp $
+ 
+ // Auto-rebuild the theme registry during theme development.
+ if (theme_get_setting('clean_rebuild_registry')) {
+@@ -46,13 +46,14 @@ function clean_preprocess_node(&$variables) {
+ 
+   if ($node->op == 'Preview' && !$variables['teaser']) {
+     $variables['template_files'][] = 'node-'. $node->type .'--preview';
+-    $variables['template_files'][] = 'node-'. $node->type .'-'. $node->nid .'--preview';    
++    $variables['template_files'][] = 'node-'. $node->type .'-'. $node->nid .'--preview';
+   }
+ 
+   $function = $theme_key . '_preprocess_node_' . $node->type;
+   if (function_exists($function)) {
+     call_user_func_array($function, array(&$variables));
+   }
++
+ }
+ 
+ /**
+@@ -62,6 +63,16 @@ function clean_preprocess_node(&$variables) {
+  *   An array of variables to pass to the theme template.
+  */
+ function clean_preprocess_page(&$variables) {
++
++  global $user;
++
++	// Check if current page is a panel
++  $panel_page = panels_get_current_page_display();
++  if ($panel_page):
++    $variables['is_panel_page'] = ($panel_page) ? TRUE : FALSE;
++    $variables['panel_page'] = $panel_page;
++	endif;
++
+   $base_path = base_path();
+   $variables['base_theme'] = $path_to_clean = drupal_get_path('theme', 'clean') . '/';
+   $path_to_theme = path_to_theme() . '/';
+@@ -118,17 +129,18 @@ function clean_preprocess_page(&$variables) {
+   }
+ 
+   $variables['styles'] = drupal_get_css(clean_css_stripped());
++
+ }
+ 
+ function clean_html_attributes(&$variables) {
+   $attributes = array();
+   $language = $variables['language'];
+-  
++
+   $attributes['xmlns'] = 'http://www.w3.org/1999/xhtml';
+   $attributes['xml:lang'] = $language->language;
+   $attributes['lang'] = $language->language;
+   $attributes['dir'] = $language->dir;
+-  
++
+   $variables['html_attr'] = $attributes;
+ }
+ 
+@@ -168,6 +180,39 @@ function clean_node_classes(&$variables) {
+ 
+   $variables['attr']['id'] = 'node-'. $node->nid;
+   $variables['attr']['class'] = implode(' ', $classes);
++
++  // Generate links to Organic groups nodes
++  $og_links = '';
++
++  if (isset($node->og_groups_both)) {
++
++	  foreach ($node->og_groups_both as $key => $value) {
++		$og_links .= l($value, 'node/'.$key).', ';
++	  }
++
++  }
++
++  $og_links = rtrim($og_links, " ,");
++
++  $variables['og_links'] = $og_links;
++
++  // Generate comment link
++  if ($node->comment_count == 0) {
++      $variables['comment_link'] = l('Add a comment', '', array('fragment' => 'comments', 'external' => TRUE));
++  } else {
++      $variables['comment_link'] = l('Comments (' . $node->comment_count . ')', '', array('fragment' => 'comments', 'external' => TRUE));
++    }
++
++
++  // Generate comma separated taxonomy term links
++  $term_links = '';
++  foreach ($node->taxonomy as $key => $value) {
++    $term_links .= l($value->name, 'taxonomy/term/'.$key).', ';
++  }
++  $term_links = rtrim($term_links, " ,");
++
++  $variables['term_links'] = $term_links;
++
+ }
+ 
+ /**
+@@ -207,7 +252,7 @@ function clean_body_classes(&$variables) {
+   $system_path = drupal_get_normal_path($path);
+   if ($section_path) {
+     $variables['attr']['id'] = 'page-'. str_replace('/', '-', $system_path);
+-  }  
++  }
+ }
+ 
+ /**
+@@ -242,7 +287,7 @@ function clean_preprocess_comment(&$variables) {
+ 
+   $variables['attr']['class'] = "comment {$variables['status']}";
+ 
+-  if ($comment->new) {  
++  if ($comment->new) {
+     $variables['attr']['class'] .= ' comment-new';
+   }
+   if ($variables['zebra']) {
+@@ -410,6 +455,21 @@ function clean_links($links, $attributes = array('class' => 'links')) {
+   global $language;
+   $output = '';
+ 
++  // Manually unset 'Add new comment' link
++  unset($links['comment_add']);
++
++
++  // Set 'subscribe' and 'unsubscribe' classes on Notifications module links
++  if ($links['notifications_0']) {
++    if (strpos($links['notifications_0']['title'],'ubscribe to')==1) {
++      $links['notifications_0']['attributes']['class'] = 'subscribe';
++    }
++    if (strpos($links['notifications_0']['title'],'nsubscribe from')==1) {
++      $links['notifications_0']['attributes']['class'] = 'unsubscribe';
++    }
++  }
++
++
+   if (count($links) > 0) {
+     $output = '<ul'. drupal_attributes($attributes) .'>';
+ 
+@@ -461,3 +521,100 @@ function clean_links($links, $attributes = array('class' => 'links')) {
+ function clean_menu_local_task($link, $active = FALSE) {
+   return '<li '. ($active ? 'class="active" ' : '') .'>'. $link ."</li>";
+ }
++
++
++/* Here is the modified theme function which is called for each day
++   on the calendar.
++*/
++
++/**
++ * Create the calendar date box.
++ */
++function clean_preprocess_calendar_datebox(&$vars) {
++  $date = $vars['date'];
++  $view = $vars['view'];
++
++  $vars['day'] = intval(substr($date, 8, 2));
++  $force_view_url = !empty($view->date_info->block) ? TRUE : FALSE;
++  $vars['url'] = date_real_url($view, NULL, $date, $force_view_url);
++  $vars['link'] = l($vars['day'], $vars['url']);
++  $vars['granularity'] = $view->date_info->granularity;
++  $vars['mini'] = $view->date_info->mini;
++
++  /* The following code has been added. It aggregates event data
++     of that day and puts it in an HTML unordered list,
++     which is parented in a div element, which, on its turn,
++     is placed next to the hyperlink. The div element with the event
++     data is hidden by using a "display:none" style.
++     The code for telling Beautytips that this is the place to look for
++     event data, is in the function
++     calendar_tooltips_initialize_beautytips().
++  */
++
++  if (!empty($vars['selected'])) {
++    $bt_text = "<ul>";
++    foreach ($vars['items'][$date] as $time => $results_at_that_time) {
++      foreach ($results_at_that_time as $num => $result) {
++        $result = (array)$result;
++        $bt_text .= "<li>";
++        /* The event data shown in the tooltip can be specified in
++           the display settings of your calendar view.
++           Choose the "Block view" display, and check out
++           the "Fields" section.
++        */
++        foreach ($view->field as $name => $field) {
++          if (!$field->options['exclude']) {
++            if ($field->options['label'] != "")
++              $bt_text .= "<div class=\"calendar_tooltips-" . $name .
++                "-label\">" . $field->options['label'] . "</div>";
++            // Some fields have no alias.
++            $field_alias = $field->field_alias != 'unknown' ?
++              $field->field_alias : $name;
++            if ($result[$field_alias] != "")
++              $bt_text .= "<div class=\"calendar_tooltips-" . $name .
++                "-value\">" . $result[$field_alias] . "</div>";
++          }
++        }
++        $bt_text .= "</li>";
++      }
++    }
++    $bt_text .= "</ul>";
++    $bt_text = "<div class=\"calendar_tooltips\" style=\"display:none\">" .
++      $bt_text . "</div>";
++
++
++
++    $vars['link'] = "<a>".$vars['day']."</a>" . $bt_text;
++    /*
++       The balloon text is appended to the link variable,
++       like this: "<a href=...>31</a> <div>balloon text</div>" (see above).
++       which makes it difficult for the user to alter the link without
++       losing the balloon text. That's why we provide an extra variable with
++       the balloon text only. The user may use this to append to
++       the new link when overriding calendar-datebox.tpl.php.
++    */
++    $vars['calendar_tooltips_text'] = $bt_text;
++  }
++  /* End of additional code. */
++
++  if ($view->date_info->mini) {
++    if (!empty($vars['selected'])) {
++      $vars['class'] = 'mini-day-on';
++    }
++    else {
++      $vars['class'] = 'mini-day-off';
++    }
++  }
++  else {
++    $vars['class'] = 'day';
++  }
++}
++
++/**
++ * Add a "Comments" heading above comments except on forum pages.
++ */
++function clean_preprocess_comment_wrapper(&$vars) {
++  if ($vars['content'] && $vars['node']->type != 'forum') {
++    $vars['content'] = '<a name="comments"><h2 class="comments">'. t('Comments') .'</h2></a>'.  $vars['content'];
++  }
++}
+diff --git a/theme-settings.php b/theme-settings.php
+index cf621f8..9e771ec 100644
+--- a/theme-settings.php
++++ b/theme-settings.php
+@@ -1,5 +1,5 @@
+ <?php
+-// $Id$
++// $Id: theme-settings.php,v 1.1.2.4.2.3 2010/02/07 19:08:59 psynaptic Exp $
+ 
+ /**
+  * Implementation of THEMEHOOK_settings() function.
