@@ -1,0 +1,13 @@
+diff --git a/gmap.module b/gmap.module
+index 61dbe69..a76423e 100644
+--- a/gmap.module
++++ b/gmap.module
+@@ -326,7 +326,7 @@ drupal_add_js($gmap_path . '/js/poly.js');
+     'key' => gmap_get_key(),
+     'hl' => $language->language,
+   );
+-  drupal_set_html_head('<script src="'. check_url(url('http://maps.google.com/maps', array('query' => $query))) .'" type="text/javascript"></script>');
++  drupal_set_html_head('<script src="//maps.google.com/maps?'. drupal_query_string_encode($query) .'" type="text/javascript"></script>');
+ 
+   $gmap_initialized = TRUE;
+ }
